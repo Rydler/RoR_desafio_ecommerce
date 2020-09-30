@@ -15,4 +15,13 @@ class Product < ApplicationRecord
   #   end
   # end
 
+  def visible_on_catalog?
+    contador = 0
+    self.variants.each do |variant|
+      contador += variant.stock
+    end
+    (contador > 0) ? false : true
+  end
+
+
 end
